@@ -1,0 +1,17 @@
+.label
+{
+    -fx-font-size: 180px;
+}
+
+.text-field
+{
+    -fx-alignment: center;
+    -fx-min-width: 50px;
+    -fx-pref-width: 100px;
+    -fx-max-width: 150px;
+}
+
+.button
+{
+    -fx-pref-width: 100px;
+}
