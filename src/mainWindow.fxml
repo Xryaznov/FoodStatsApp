@@ -24,10 +24,13 @@
     </center>
 
     <bottom>
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="name"/>
+            <TextField fx:id="kcal"/>
         <Button fx:id="addBtn"
                 text="+"
-                BorderPane.alignment="CENTER"
                 onAction="#handleSubmitButtonAction"/>
+        </HBox>
     </bottom>
 
 
