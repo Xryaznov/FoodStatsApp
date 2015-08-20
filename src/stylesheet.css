@@ -3,6 +3,11 @@
     -fx-font-size: 180px;
 }
 
+#statusBar
+{
+    -fx-font-size: 12px;
+}
+
 .text-field
 {
     -fx-alignment: center;

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane fx:controller="controllers.PopUpWindowController"
+          xmlns:fx="http://javafx.com/fxml" alignment="CENTER">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <VBox fx:id="addToFoodStats" spacing="10">
+        <TextField fx:id="product"/>
+        <TextField fx:id="proteins"/>
+        <TextField fx:id="lipids"/>
+        <TextField fx:id="carbs"/>
+        <TextField fx:id="kcal"/>
+        <Button fx:id="addBtn"
+                text="+"/>
+    </VBox>
+
+
+</FlowPane>
