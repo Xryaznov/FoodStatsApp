@@ -22,7 +22,7 @@
 
 
     <center>
-        <TextArea fx:id="label" editable="false" BorderPane.alignment="CENTER"
+        <Label fx:id="label" BorderPane.alignment="CENTER"
                onMouseClicked="#showList"/>
     </center>
 

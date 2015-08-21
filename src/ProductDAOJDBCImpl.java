@@ -10,6 +10,9 @@ public class ProductDAOJDBCImpl implements ProductDAO
     {
         try
         {
+            // Class.forName("jdbc:sqlite:foodStats.db");
+            // classpath?
+
             conn = DriverManager.getConnection("jdbc:sqlite:foodStats.db");
             Statement s = conn.createStatement();
             s.setQueryTimeout(30);
@@ -41,44 +44,44 @@ public class ProductDAOJDBCImpl implements ProductDAO
     public List<Product> findAll()
     {
         ArrayList<Product> list = new ArrayList<>();
-    try
-    {
-        conn = DriverManager.getConnection("jdbc:sqlite:foodStats.db");
-        Statement s = conn.createStatement();
-
-        ResultSet rs = s.executeQuery("SELECT * FROM FOOD;");
-
-        while (rs.next())
-        {
-            System.out.println(rs.getString("NAME"));
-            list.add(new Product(
-                    rs.getString("NAME"),
-                    rs.getDouble("PROTEIN"),
-                    rs.getDouble("FAT"),
-                    rs.getDouble("CARB"),
-                    rs.getDouble("KCAL")));
-        }
-    }
-    catch (SQLException e)
-    {
-        System.err.print(e.getMessage());
-    }
-    finally
-    {
         try
         {
-            if (conn != null)
+            conn = DriverManager.getConnection("jdbc:sqlite:foodStats.db");
+            Statement s = conn.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT * FROM FOOD;");
+
+            while (rs.next())
             {
-                conn.close();
+                System.out.println(rs.getString("NAME"));
+                list.add(new Product(
+                        rs.getString("NAME"),
+                        rs.getDouble("PROTEIN"),
+                        rs.getDouble("FAT"),
+                        rs.getDouble("CARB"),
+                        rs.getDouble("KCAL")));
             }
         }
         catch (SQLException e)
         {
-            System.err.println(e.getMessage());
+            System.err.print(e.getMessage());
         }
+        finally
+        {
+            try
+            {
+                if (conn != null)
+                {
+                    conn.close();
+                }
+            }
+            catch (SQLException e)
+            {
+                System.err.println(e.getMessage());
+            }
+        }
+        return list;
     }
-    return list;
-}
 
     @Override
     public List<Product> findByDate()
@@ -87,9 +90,46 @@ public class ProductDAOJDBCImpl implements ProductDAO
     }
 
     @Override
-    public List<Product> findByName()
+    public List<Product> findByName(String productName)
     {
-        return null;
+        ArrayList<Product> list = new ArrayList<>();
+        try
+        {
+            conn = DriverManager.getConnection("jdbc:sqlite:foodStats.db");
+            Statement s = conn.createStatement();
+
+            ResultSet rs = s.executeQuery("SELECT * FROM FOOD WHERE NAME = ';" + productName + "';");
+
+            while (rs.next())
+            {
+                System.out.println(rs.getString("NAME"));
+                list.add(new Product(
+                        rs.getString("NAME"),
+                        rs.getDouble("PROTEIN"),
+                        rs.getDouble("FAT"),
+                        rs.getDouble("CARB"),
+                        rs.getDouble("KCAL")));
+            }
+        }
+        catch (SQLException e)
+        {
+            System.err.print(e.getMessage());
+        }
+        finally
+        {
+            try
+            {
+                if (conn != null)
+                {
+                    conn.close();
+                }
+            }
+            catch (SQLException e)
+            {
+                System.err.println(e.getMessage());
+            }
+        }
+        return list;
     }
 
     @Override

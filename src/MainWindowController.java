@@ -7,12 +7,13 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable
 {
     @FXML
-    private TextArea label;
+    private Label label;
     @FXML
     private TextField date;
     @FXML
@@ -36,6 +37,16 @@ public class MainWindowController implements Initializable
         String productName = product.getText();
         Double productWeight = Double.valueOf(weight.getText());
 
+        ProductDAOJDBCImpl db = new ProductDAOJDBCImpl();
+
+//        boolean insert = db.insertProduct(new Product("?????????????????", 2.9, 1.5, 14.8, 84));
+//        System.out.println(insert);
+
+
+        List products = db.findByName(productName);
+
+        System.out.println(products.size());
+
         // if productName is not in db - addNewProduct; else - addNewMeal;
         // new Connector().insertValue(1, date.getText(), product.getText(), Integer.parseInt(kcal.getText()));
 
@@ -43,6 +54,7 @@ public class MainWindowController implements Initializable
         addNewProduct();
 
         ProductDAOJDBCImpl jdbc = new ProductDAOJDBCImpl();
+
         System.out.println(jdbc.findAll());
     }
 
@@ -59,7 +71,11 @@ public class MainWindowController implements Initializable
         lipids.visibleProperty().set(true);
         carbs.visibleProperty().set(true);
         kcal.visibleProperty().set(true);
+
         statusBar.setText("No product found in database, add data then press +");
+
+
+
     }
 
     @Override
@@ -69,7 +85,7 @@ public class MainWindowController implements Initializable
         String today = f.format(new Date().getTime());
         date.setText(today);
 
-        label.setText("TO DO");
+        label.setText("2000");
 
         proteins.managedProperty().bind(proteins.visibleProperty());
         proteins.visibleProperty().set(false);
