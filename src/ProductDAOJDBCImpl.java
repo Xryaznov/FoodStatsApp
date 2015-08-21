@@ -46,14 +46,16 @@ public class ProductDAOJDBCImpl implements ProductDAO
             conn = DriverManager.getConnection("jdbc:sqlite:foodStats.db");
             Statement s = conn.createStatement();
 
-            ResultSet rs = s.executeQuery("SELECT * FROM FOOD);");
+            ResultSet rs = s.executeQuery("SELECT * FROM FOOD;");
 
             while (rs.next())
             {
-                list.add(new Product(rs.getString("NAME"),
-                        rs.getDouble("PROTEINS"),
-                        rs.getDouble("LIPIDS"),
-                        rs.getDouble("CARBS"),
+                System.out.println(rs.getString("NAME"));
+                list.add(new Product(
+                        rs.getString("NAME"),
+                        rs.getDouble("PROTEIN"),
+                        rs.getDouble("FAT"),
+                        rs.getDouble("CARB"),
                         rs.getDouble("KCAL")));
             }
         }

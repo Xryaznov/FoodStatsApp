@@ -39,4 +39,16 @@ public class Product
     {
         return kcal;
     }
+
+    @Override
+    public String toString()
+    {
+        final StringBuilder sb = new StringBuilder();
+        sb.append(name).append(':');
+        sb.append(", PROTEIN: ").append(proteins);
+        sb.append(", FAT: ").append(lipids);
+        sb.append(", CARB: ").append(carbs);
+        sb.append(", KCAL: ").append(kcal);
+        return sb.toString();
+    }
 }
