@@ -1,6 +1,12 @@
-.label
+.text-area
 {
-    -fx-font-size: 180px;
+    -fx-font-size: 198px;
+    -fx-color: transparent;
+}
+
+.text-area *.text {
+    -fx-text-alignment: center;
+     -fx-font-size: 180px;
 }
 
 #statusBar
