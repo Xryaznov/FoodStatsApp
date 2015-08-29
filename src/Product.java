@@ -1,17 +1,17 @@
 public class Product
 {
     private String name;
-    private double proteins;
-    private double lipids;
-    private double carbs;
+    private double protein;
+    private double fat;
+    private double carb;
     private double kcal;
 
-    public Product(String name, double proteins, double lipids, double carbs, double kcal)
+    public Product(String name, double protein, double fat, double carb, double kcal)
     {
         this.name = name;
-        this.proteins = proteins;
-        this.lipids = lipids;
-        this.carbs = carbs;
+        this.protein = protein;
+        this.fat = fat;
+        this.carb = carb;
         this.kcal = kcal;
     }
 
@@ -20,19 +20,19 @@ public class Product
         return name;
     }
 
-    public double getProteins()
+    public double getProtein()
     {
-        return proteins;
+        return protein;
     }
 
-    public double getLipids()
+    public double getFat()
     {
-        return lipids;
+        return fat;
     }
 
-    public double getCarbs()
+    public double getCarb()
     {
-        return carbs;
+        return carb;
     }
 
     public double getKcal()
@@ -43,11 +43,10 @@ public class Product
     @Override
     public String toString()
     {
-        final StringBuilder sb = new StringBuilder();
-        sb.append(name).append(':');
-        sb.append(", PROTEIN: ").append(proteins);
-        sb.append(", FAT: ").append(lipids);
-        sb.append(", CARB: ").append(carbs);
+        final StringBuilder sb = new StringBuilder(name);
+        sb.append(", PROTEIN: ").append(protein);
+        sb.append(", FAT: ").append(fat);
+        sb.append(", CARB: ").append(carb);
         sb.append(", KCAL: ").append(kcal);
         return sb.toString();
     }

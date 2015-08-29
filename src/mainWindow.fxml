@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-
+<?import javafx.scene.web.HTMLEditor?>
 <BorderPane fx:controller="MainWindowController"
             xmlns:fx="http://javafx.com/fxml">
 
@@ -22,26 +22,24 @@
 
 
     <center>
-        <Label fx:id="label" BorderPane.alignment="CENTER"
-               onMouseClicked="#showList"/>
+        <Label fx:id="label" onMouseClicked="#showProductsEatenToday"/>
     </center>
 
     <bottom>
         <VBox>
             <HBox spacing="10" alignment="CENTER">
                 <TextField fx:id="product" promptText="product"/>
-                <TextField fx:id="proteins" promptText="proteins"/>
-                <TextField fx:id="lipids" promptText="lipids"/>
-                <TextField fx:id="carbs" promptText="carbs"/>
+                <TextField fx:id="protein" promptText="protein"/>
+                <TextField fx:id="fat" promptText="fat"/>
+                <TextField fx:id="carb" promptText="carb"/>
                 <TextField fx:id="kcal" promptText="kcal"/>
                 <TextField fx:id="weight" promptText="weight"/>
-                <Button fx:id="addBtn"
-                        text="+"
-                        onAction="#handleSubmitButtonAction"/>
+                <Button fx:id="addBtn" text="+" onAction="#handleSubmitButtonAction"/>
             </HBox>
-            <HBox>
+            <HBox spacing="10">
                 <Label fx:id="statusBar"/>
             </HBox>
+
         </VBox>
     </bottom>
 </BorderPane>

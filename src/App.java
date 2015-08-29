@@ -12,9 +12,6 @@ public class App extends Application
     {
         Parent root = FXMLLoader.load(getClass().getResource("mainWindow.fxml"));
 
-
-
-
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add("stylesheet.css");
 

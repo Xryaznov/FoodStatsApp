@@ -1,3 +1,4 @@
+import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +7,7 @@ public class ProductDAOJDBCImpl implements ProductDAO
 {
     private static Connection conn;
 
-    public static void init()
+    public static void main(String[] args)
     {
         try
         {
@@ -18,7 +19,7 @@ public class ProductDAOJDBCImpl implements ProductDAO
             s.setQueryTimeout(30);
 
             s.executeUpdate("DROP TABLE IF EXISTS FOOD");
-            s.executeUpdate("CREATE TABLE FOOD (ID INTEGER, DATE STRING, NAME STRING, KCAL INTEGER)");
+            s.executeUpdate("CREATE TABLE FOOD (ID INTEGER PRIMARY KEY, NAME TEXT, PROTEIN REAL, FAT REAL, CARB REAL, KCAL REAL);");
         }
         catch (SQLException e)
         {
@@ -135,25 +136,33 @@ public class ProductDAOJDBCImpl implements ProductDAO
     @Override
     public boolean insertProduct(Product product)
     {
+        System.out.println(conn == null);
         try
         {
-            if (conn == null)
+            if (conn.isClosed())
             {
                 conn = DriverManager.getConnection("jdbc:sqlite:foodStats.db");
 
             }
+            System.out.println(conn);
             Statement s = conn.createStatement();
             StringBuilder sb = new StringBuilder("INSERT INTO FOOD VALUES (NULL, ");
-            sb.append("'").append(product.getName()).append("'").append(", ");
-            sb.append(product.getProteins()).append(",");
-            sb.append(product.getLipids()).append(",");
-            sb.append(product.getCarbs()).append(",");
+            sb.append("'").append(new String(product.getName().getBytes("UTF-8"))).append("'").append(", ");
+            sb.append(product.getProtein()).append(", ");
+            sb.append(product.getFat()).append(", ");
+            sb.append(product.getCarb()).append(", ");
             sb.append(product.getKcal()).append(");");
 
+            System.out.println(sb.toString());
             s.executeQuery(sb.toString());
 
         }
         catch (SQLException e)
+        {
+            System.err.print(e.getMessage());
+            return false;
+        }
+        catch (UnsupportedEncodingException e)
         {
             System.err.print(e.getMessage());
             return false;
