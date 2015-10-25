@@ -31,6 +31,6 @@ public class MealTest
     @Test
     public void testToString() throws Exception
     {
-        assertEquals("17-09-2015: ЙогуртВолошПоле, 397.6;", meal.toString());
+        assertEquals(Utils.getCurrentDay() + ": ЙогуртВолошПоле, 397.6;", meal.toString());
     }
 }

@@ -2,6 +2,8 @@ package main.java.food;
 
 import java.text.DecimalFormat;
 
+
+// TODO add id field to product? To avoid all to db when inserting meal
 public class Product implements Eatable
 {
     private String name;
@@ -37,6 +39,7 @@ public class Product implements Eatable
         this.kcal = Double.parseDouble(df.format(res));
     }
 
+    // TODO Is this really needed?
     @Override
     public double calculateKcal()
     {
@@ -71,12 +74,6 @@ public class Product implements Eatable
     @Override
     public String toString()
     {
-        final StringBuilder sb = new StringBuilder(name);
-        sb.append(": ").append(protein);
-        sb.append(", ").append(fat);
-        sb.append(", ").append(carb);
-        sb.append(", ").append(kcal);
-        sb.append(";");
-        return sb.toString();
+        return name;
     }
 }

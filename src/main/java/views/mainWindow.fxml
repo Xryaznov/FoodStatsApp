@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:controller="main.java.ui.MainWindowController"
+            xmlns:fx="http://javafx.com/fxml">
+
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <top>
+        <HBox spacing="10" alignment="CENTER">
+            <Button text="prev"/>
+            <TextField fx:id="date"/>
+            <Button text="next"/>
+        </HBox>
+    </top>
+
+
+    <center>
+        <Label fx:id="label" onMouseClicked="#showCurrentDayStats"/>
+    </center>
+
+    <bottom>
+        <VBox>
+            <HBox spacing="10" alignment="CENTER">
+                <ComboBox fx:id="comboBox" promptText="Add new product"/>
+                <TextField fx:id="weightField" promptText="weight"/>
+                <Button fx:id="addBtn" text="+" onAction="#addMeal"/>
+            </HBox>
+            <HBox spacing="10">
+                <Label fx:id="statusBar"/>
+            </HBox>
+
+        </VBox>
+    </bottom>
+</BorderPane>
+

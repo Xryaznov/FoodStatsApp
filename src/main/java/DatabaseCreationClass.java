@@ -2,6 +2,7 @@ package main.java;
 
 import main.java.food.Product;
 import main.java.jdbc.JdbcDaoImpl;
+import main.java.utils.Utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -72,8 +73,8 @@ public class DatabaseCreationClass
                 System.out.println("Inserting meals...");
 
 
-                jdbc.insertMeal(product1, 350);
-                jdbc.insertMeal(product2, 23.5);
+                jdbc.insertMeal(Utils.getCurrentDay(), product1.getName(), 350);
+                jdbc.insertMeal(Utils.getCurrentDay(), product2.getName(), 23.5);
             }
             catch (Exception e)
             {

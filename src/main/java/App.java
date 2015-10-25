@@ -7,23 +7,28 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-public class App extends Application
-{
+public class App extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception
-    {
-        Parent root = FXMLLoader.load(getClass().getResource("/mainWindow.fxml"));
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = null;
 
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add("/stylesheet.css");
+        try {
 
-        primaryStage.setTitle("FoodStatsApp");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            root = FXMLLoader.load(getClass().getResource("/main/java/views/mainWindow.fxml"));
+
+            Scene scene = new Scene(root, 800, 600);
+            scene.getStylesheets().add("/main/java/views/stylesheet.css");
+
+            primaryStage.setTitle("FoodStatsApp");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         launch(args);
     }
 }

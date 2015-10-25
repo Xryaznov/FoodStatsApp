@@ -12,13 +12,18 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-    </properties>
+            </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.0.31-beta</version>
+        </dependency>
 
     </dependencies>
     <build>
+
      <plugins>
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
